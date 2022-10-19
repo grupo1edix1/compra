@@ -1,3 +1,4 @@
+//Variables
 var artName;
 var artPrice;
 var artCount;
@@ -12,8 +13,8 @@ var checkBox;
 var printButton;
 var resetButton;
 var validPrice = /^\d+([.]\d*)?$/;
-var validCard= /^\d{16}$/
-var validCVV= /^\d{3}$/
+var validCard= /^\d{16}$/;
+var validCVV= /^\d{3}$/;
 
 class Article {
 
@@ -84,6 +85,8 @@ function inicializarEventos(){
 		document.getElementById("form1").reset();
 		document.getElementById("form2").reset();
 		artArray = [];
+		cardBlock.style.display ="none";
+		moneyBlock.style.display="none";
 		borrarErrores();
 	});
 	checkBox.addEventListener("change", () =>{
@@ -101,12 +104,14 @@ function inicializarEventos(){
 			pay="Efectivo";
 		}
 		var cardName = document.getElementById("fcardname").value;
-		if (cardName==undefined || cardName==""){
-			error3.style.display="inline";
-		} else if (paySelect.value == "tarjeta" && !document.getElementById("fcardnumber").value.match(validCard)){
-			error4.style.display="inline";
-		} else if (paySelect.value == "tarjeta" && !document.getElementById("fcvv").value.match(validCVV)){
-			error5.style.display="inline";
+		if (pay=="tarjeta"){
+			if (cardName==undefined || cardName==""){
+				error3.style.display="inline";
+			} else if (paySelect.value == "tarjeta" && !document.getElementById("fcardnumber").value.match(validCard)){
+				error4.style.display="inline";
+			} else if (paySelect.value == "tarjeta" && !document.getElementById("fcvv").value.match(validCVV)){
+				error5.style.display="inline";
+			}
 		} else {
 			imprimir(pay);
 			borrarErrores();
@@ -143,8 +148,6 @@ function guardarValores(){
 	}
 	artTotal.value=total.count;
 }
-
-
 
 function arrayMostrar(array){
 	var string1 = {name:"", price:0, count:0};
