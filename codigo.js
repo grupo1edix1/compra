@@ -1,3 +1,4 @@
+//Variables
 var artName;
 var artPrice;
 var artCount;
@@ -12,8 +13,8 @@ var checkBox;
 var printButton;
 var resetButton;
 var validPrice = /^\d+([.]\d*)?$/;
-var validCard= /^\d{16}$/
-var validCVV= /^\d{3}$/
+var validCard= /^\d{16}$/;
+var validCVV= /^\d{3}$/;
 
 class Article {
 
