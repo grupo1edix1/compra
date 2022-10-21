@@ -1,23 +1,26 @@
-//Variables
-var artName;
-var artPrice;
-var artCount;
-var error1, error2, error3, error4, error5;
-var submitButton;
+
+//Variables 
+//variables que almacena la entrada de datos del usuario
+var artName, artPrice, artCount;
+//variables que recopilan y almacen los datos introducidos
 var artText;
 var artArray;
-var cardBlock;
-var moneyBlock;
+//Botones y otros métodos de selección
+var submitButton, printButton, resetButton;
+var cardBlock, moneyBlock;
 var paySelect;
 var checkBox;
-var printButton;
-var resetButton;
+//Errores
+var error1, error2, error3, error4, error5;
+//Validaciones
 var validPrice = /^\d+([.]\d*)?$/;
 var validCard= /^\d{16}$/;
 var validCVV= /^\d{3}$/;
 
-class Article {
 
+//Declaración de clase Artículo
+class Article {
+    
 	constructor (name, price, count){
 		this.name = name;
 		this.price = price;
@@ -25,7 +28,7 @@ class Article {
 	}
 
 }
-
+//Inicializamos las variables y los eventos en carga
 window.addEventListener("load", () => {
 	inicializarVariables();
 	inicializarEventos();
@@ -52,6 +55,7 @@ function inicializarVariables(){
 }
 
 function inicializarEventos(){
+	//Botón submit guarda los valores y los imprime por pantalla
 	submitButton.addEventListener("click", () =>{
 		artName = document.getElementById("fname").value;
 		artPrice = parseFloat(document.getElementById("fprice").value);
@@ -65,6 +69,7 @@ function inicializarEventos(){
 			borrarErrores();
 		}
 	});
+	//Selección de métodos de pago y muestra diferentes opciones
 	paySelect.addEventListener('change', () => {
 		switch (paySelect.value){
 			case "tarjeta":
@@ -81,6 +86,7 @@ function inicializarEventos(){
 			break;
 		}	 
 	});
+	//Botón reset: Limpia formularios y reinicia valores
 	resetButton.addEventListener("click", () => {
 		document.getElementById("form1").reset();
 		document.getElementById("form2").reset();
@@ -89,6 +95,7 @@ function inicializarEventos(){
 		moneyBlock.style.display="none";
 		borrarErrores();
 	});
+	//Habilita el botón imprimir
 	checkBox.addEventListener("change", () =>{
 		if (checkBox.checked == true){
 			printButton.disabled = false;
@@ -96,6 +103,7 @@ function inicializarEventos(){
 			printButton.disabled = true;
 		}
 	});
+	//Botón impirmir. Muestra el alert dependiendo de la forma de pago
 	printButton.addEventListener("click", () =>{
 		let pay;
 		if (paySelect.value=="tarjeta"){
@@ -118,14 +126,16 @@ function inicializarEventos(){
 		}
 	});
 }
+//Funciones  
 
+//Borra errores, quita la visibilidad de los errores
 function borrarErrores(){
 	var errors = document.getElementsByTagName("small");
 	for (var i=0; i<errors.length; i++){
 		errors[i].style.display="none";
 	}
 }	
-
+//Muestra alert dependiendo de la forma de pago (Parámetro de entrada: String)
 function imprimir(pay){
 	if (pay != undefined){
 	alert("Los artículos de mi carrito son: " + artText.value + "\n"
@@ -135,7 +145,7 @@ function imprimir(pay){
 		alert("Seleccione método de pago.");
 	}
 }
-
+//Guarda valores en array y muestra valores en el segundo formulario
 function guardarValores(){
 	var art = new Article(artName, artPrice, artCount);
 	artArray.push(art);
@@ -148,7 +158,8 @@ function guardarValores(){
 	}
 	artTotal.value=total.count;
 }
-
+/*Concatena los datos del array y hace el sumatorio del precio y las unidades (Parámetro de entrada: Array y devuelve un
+diccionario con tres claves)*/
 function arrayMostrar(array){
 	var string1 = {name:"", price:0, count:0};
 	for (var i = 0; i<array.length; i++){
