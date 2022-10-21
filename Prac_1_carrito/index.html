@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practica1</title>
+
+  <link rel="stylesheet" href="estilos.css">
+  <script type="text/javascript" src="codigo.js"></script>
+<body>
+
+
+<h2>TICKET DE COMPRA</h2>
+
+<form id="form1" action="">
+  <label for="fname">Nombre del artículo: </label>
+  <input type="text" id="fname" name="fname"><small id="error1" >Introduce artículo válido</small><br>
+  <label for="fprice">Precio del artículo:</label>
+  <input type="text" id="fprice" name="fprice" ><small id="error2" >Introduce un valor válido</small><br>
+  <lable for="fcount">Unidades:</lable>
+  <input type="number" min=1 value=1 id="fcount" name="fcount"><br>
+  <button type="button" id="submit" value="Submit">Añadir al carrito</button>
+</form>
+
+<form id="form2" action="">
+  <label for="fart">Articulos: </label>
+  <input type="text" id="lart" name="fart"><br>
+  <label for="lprice">Precio total:</label>
+  <input type="text" id="lprice" name="price"><br>
+  <lable for="lcount">Cantidad:</lable>
+  <input type="number" id="lcount" name="lcount"><br>
+  <label for="spay">Método de pago</label>
+      <select name="lenguajes" id="spay">
+        <option value="efectivo">Efectivo</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="null" selected="selected">--Elija opción--</option>
+      </select>
+      <div class="block" id="card">
+        <label for="fcardname">Nombre del titular: </label>
+        <input type="text" id="fcardname" name="fcardname"><small id="error3" >Introduce una tarjeta válida</small><br>
+        <label for="fcardnumber">Número de la tarjeta: </label>
+        <input type="text" id="fcardnumber" name="fcardnumber"><small id="error4" >Introduce una tarjeta válida</small><br>
+        <label for="fcvv">CVV: </label>
+        <input type="text" id="fcvv" name="fcvv"><small id="error5" >Introduce un valor válido</small><br>
+      </div>
+      <div class="block" id="money">
+        <label for="lprice">Importe:</label>
+        <input type="text" id="lprice2" name="price"><br>
+      </div>
+</form>
+
+<label><input type="checkbox" id="cbox1" value="">Acepto condiciones de uso</label>
+<button type="button" id="print" value="print">Imprimir</button>
+<button type="button" id="reset" value="reset">Restablecer</button>
+
+</body>
+</html>
